@@ -17,7 +17,7 @@ class City
     end
 
     def animals
-        select_animals.map(&:species).uniq
+        animals_in_city.map(&:species).uniq
     end
     
     def animal_number
@@ -29,10 +29,10 @@ class City
     end
 
     def self.most_animals
-        self.all.max_by {|city| city.select_animals.count}
+        self.all.max_by {|city| city.animals_in_city.count}
     end
 
-    def select_animals
+    def animals_in_city
         self.zoos.map(&:animals).flatten
     end
 end
